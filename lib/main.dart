@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     height: 55.0.h,
-                    width: 80.0.w,
+                    width: 75.0.w,
                     decoration: BoxDecoration(
                         color: Color(0xFFFAD4B2),
                         borderRadius: BorderRadius.only(
@@ -82,7 +82,131 @@ class _HomePageState extends State<HomePage> {
                         Spacer(),
                       ],
                     ),
-                  )
+                  ),
+
+                  Container(
+                    height: 55.0.h,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: 25.0.w,
+                          height: 12.0.w,
+                          child: Center(
+                            child: Container(
+                                width: 12.0.w,
+                                height: 12.0.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(.1),
+                                      blurRadius: 5,
+                                      spreadRadius: 2,
+                                      offset: Offset(0,4)
+                                    ),
+                                  ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset("assets/bulb.png"),
+                                ),
+                              ),
+                          ),
+                        ),
+
+
+                        Container(
+                          width: 25.0.w,
+                          height: 12.0.w,
+                          child: Center(
+                            child: Container(
+                                width: 12.0.w,
+                                height: 12.0.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(.1),
+                                      blurRadius: 5,
+                                      spreadRadius: 2,
+                                      offset: Offset(0,4)
+                                    ),
+                                  ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset("assets/geer.png"),
+                                ),
+                              ),
+                          ),
+                        ),
+
+
+                        Container(
+                          width: 25.0.w,
+                          height: 12.0.w,
+                          child: Center(
+                            child: Container(
+                                width: 12.0.w,
+                                height: 12.0.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(.1),
+                                      blurRadius: 5,
+                                      spreadRadius: 2,
+                                      offset: Offset(0,4)
+                                    ),
+                                  ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset("assets/phone.png"),
+                                ),
+                              ),
+                          ),
+                        ),
+
+                        Container(
+                          width: 25.0.w,
+                          height: 12.0.w,
+                          child: Center(
+                            child: Container(
+                                width: 12.0.w,
+                                height: 12.0.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(.1),
+                                      blurRadius: 5,
+                                      spreadRadius: 2,
+                                      offset: Offset(0,4)
+                                    ),
+                                  ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset("assets/signin.png"),
+                                ),
+                              ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
+                  ),
+
+
+
+                  
                 ],
               )
             ],
