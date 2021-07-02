@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<Widget> _sc = [HomepageHeader(), HomePageSearchBar(), ProjectsList()];
+  List<Widget> _sc = [HomepageHeader(), ProjectsList()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                   (BuildContext ctx, int index) {
                     return _sc[index];
                   },
-                  childCount: 3,
+                  childCount: 2,
                 ),
               ),
 
