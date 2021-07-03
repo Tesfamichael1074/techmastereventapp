@@ -30,8 +30,7 @@ class ProjectsService {
   Future<ProjecetSlug> getProjectSlug(String slug) async {
     try {
         Response response = await dio.dio.get("/projects/slug/" + slug);
-        print("********************");
-        print(response.data);
+        
         return ProjecetSlug.fromJson(json.decode(response.data));
 
     } catch(e) {  

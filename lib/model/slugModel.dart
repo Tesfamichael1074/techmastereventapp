@@ -10,7 +10,7 @@ class ProjecetSlug {
   String imagepath;
   AuthorModel author;
 
-  ProjecetSlug(this.id, this.name, this.score, this.shortDescription, this.slug, this.imagepath, this.author);
+  ProjecetSlug(this.id, this.name, this.score, this.shortDescription, this.description, this.author, this.imagepath, this.slug);
 
   ProjecetSlug.fromJson(Map<String, dynamic> json)
       : id = json["id"],
