@@ -7,9 +7,12 @@ import 'package:techmasterevent/projectCard.dart';
 import 'package:sizer/sizer.dart';
 import 'package:techmasterevent/provider/projectProvider.dart';
 import 'package:techmasterevent/reusable/customSizedBox.dart';
+import 'package:techmasterevent/screens/allProjects.dart';
 import 'package:techmasterevent/services/projectsService.dart';
 
 class ProjectsList extends StatefulWidget {
+  final double height;
+  ProjectsList({this.height});
   @override
   _ProjectsListState createState() => _ProjectsListState();
 }
@@ -24,21 +27,20 @@ class _ProjectsListState extends State<ProjectsList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45.0.h,
+      height: widget.height,
       child: CustomScrollView(
         primary: false,
         slivers: <Widget>[
-//
           SliverToBoxAdapter(
             child: Container(
-              height: 45.0.h,
+              height: widget.height,
               child: ChangeNotifierProvider<ProjectProvider>(
                 create: (context) => ProjectProvider(),
                 builder: (context, child) {
                   return child;
                 },
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                  scrollDirection: widget.height == 45.0.h ? Axis.horizontal : Axis.vertical,
                   itemCount:
                       Provider.of<ProjectProvider>(context).projects.length,
                   itemBuilder: (ctx, index) {
@@ -46,13 +48,14 @@ class _ProjectsListState extends State<ProjectsList> {
                         Provider.of<ProjectProvider>(context).projects[index];
                     return InkWell(
                       onTap: () {
-                        ProjectProvider pg = new ProjectProvider();
-                        pg.fetchProjects();
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => AllProjectsPage()));
                       },
                       child: Container(
-                        width: 50.0.w,
+                        width: widget.height == 45.0.h ? 50.0.w : 100.0.w,
                         margin: EdgeInsets.symmetric(
-                            vertical: 5.0.h, horizontal: 10),
+                            vertical: widget.height == 45.0.h ? 5.0.h : 1.0.h , 
+                            horizontal: widget.height == 45.0.h ? 10 : 5.0.w,
+                            ),
                         child: Stack(
                           children: [
                             Card(
@@ -65,7 +68,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 50.0.w,
+                                      width: widget.height == 45.0.h ? 50.0.w : 100.0.w,
                                       height: 20.0.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
@@ -75,8 +78,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                       ),
                                       child: CachedNetworkImage(
                                         imageUrl:
-                                            "https://" + data.imagepath,
-                                        fit: BoxFit.fill,
+                                           data.imagepath != null ? "https://" +  data.imagepath : "https://via.placeholder.com/600/24f355",
                                         imageBuilder: (context, imageProvider) => Container(
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
@@ -85,7 +87,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                         ),
                                             image: DecorationImage(
                                                 image: imageProvider,
-                                                fit: BoxFit.fitHeight,
+                                                fit: BoxFit.cover,
                                                 
                                                 ),
                                           ),

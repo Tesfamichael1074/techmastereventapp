@@ -12,9 +12,10 @@ class HomePageSearchBar extends StatelessWidget {
                   vertical: 2.0.h
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 70.0.w,
+                      width: 80.0.w,
                       height: 6.0.h,
                       child: TextFormField(
                         

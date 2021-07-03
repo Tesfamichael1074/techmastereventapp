@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:techmasterevent/screens/allProjects.dart';
 
 class HomepageHeader extends StatelessWidget {
 
@@ -85,26 +86,31 @@ class HomepageHeader extends StatelessWidget {
                             width: 25.0.w,
                             height: 12.0.w,
                             child: Center(
-                              child: Container(
-                                  width: 12.0.w,
-                                  height: 12.0.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(.1),
-                                        blurRadius: 5,
-                                        spreadRadius: 2,
-                                        offset: Offset(0,4)
-                                      ),
-                                    ]
+                              child: InkWell(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AllProjectsPage()));
+                                },
+                                child: Container(
+                                    width: 12.0.w,
+                                    height: 12.0.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(.1),
+                                          blurRadius: 5,
+                                          spreadRadius: 2,
+                                          offset: Offset(0,4)
+                                        ),
+                                      ]
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset("assets/geer.png"),
+                                    ),
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image.asset("assets/geer.png"),
-                                  ),
-                                ),
+                              ),
                             ),
                           ),
 

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:techmasterevent/model/projectsModel.dart';
 import 'package:techmasterevent/services/projectsService.dart';
 
+/// This is provider from tesfa
 class ProjectProvider extends ChangeNotifier {
 
   List<Projects> projects = [];
@@ -15,7 +16,6 @@ class ProjectProvider extends ChangeNotifier {
   ProjectsService pg = new ProjectsService();
 
   Future<void> fetchProjects() async {
-      projects = [];
       projects = await pg.getProjects();
       print(projects.length);
       notifyListeners();
