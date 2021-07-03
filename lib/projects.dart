@@ -42,7 +42,7 @@ class _ProjectsListState extends State<ProjectsList> {
                 },
                 child: ListView.builder(
                   scrollDirection:
-                      widget.height == 45.0.h ? Axis.horizontal : Axis.vertical,
+                      widget.height == 40.0.h ? Axis.horizontal : Axis.vertical,
                   itemCount:
                       Provider.of<ProjectProvider>(context).projects.length,
                   itemBuilder: (ctx, index) {
@@ -61,10 +61,10 @@ class _ProjectsListState extends State<ProjectsList> {
                         );
                       },
                       child: Container(
-                        width: widget.height == 45.0.h ? 50.0.w : 100.0.w,
+                        width: widget.height == 40.0.h ? widget.height : 100.0.w,
                         margin: EdgeInsets.symmetric(
-                          vertical: widget.height == 45.0.h ? 5.0.h : 1.0.h,
-                          horizontal: widget.height == 45.0.h ? 10 : 5.0.w,
+                          vertical: widget.height == 40.0.h ? 5.0.h : 1.0.h,
+                          horizontal: widget.height == 40.0.h ? 10 : 5.0.w,
                         ),
                         child: Stack(
                           children: [
@@ -78,8 +78,8 @@ class _ProjectsListState extends State<ProjectsList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: widget.height == 45.0.h
-                                          ? 50.0.w
+                                      width: widget.height == 40.0.h
+                                          ? widget.height
                                           : 100.0.w,
                                       height: 20.0.h,
                                       decoration: BoxDecoration(
@@ -150,7 +150,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                       child: Text(
                                         data.slug,
                                         overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
+                                        maxLines: 1,
                                         style: GoogleFonts.quicksand(
                                             fontSize: 8.0.sp),
                                       ),

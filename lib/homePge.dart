@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<Widget> _sc = [HomepageHeader(), ProjectsList(height: 45.0.h,)];
+  List<Widget> _sc = [HomepageHeader(), ProjectsList(height: 40.0.h,)];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
