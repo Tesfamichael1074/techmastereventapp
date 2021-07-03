@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer_util.dart';
 import 'package:sizer/sizer.dart';
 import 'package:techmasterevent/homePge.dart';
+import 'package:techmasterevent/provider/projectProvider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => ProjectProvider()),
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
