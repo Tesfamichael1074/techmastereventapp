@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:techmasterevent/model/projectsModel.dart';
+import 'package:techmasterevent/model/slugModel.dart';
 import 'package:techmasterevent/services/dioService.dart';
 
 class ProjectsService {
@@ -19,6 +20,19 @@ class ProjectsService {
           temp.add(Projects.fromJson(p));
         }
         return temp;
+
+    } catch(e) {  
+    print(" =================================================== Error \n $e");
+    }    
+  }
+
+
+  Future<ProjecetSlug> getProjectSlug(String slug) async {
+    try {
+        Response response = await dio.dio.get("/projects/slug/" + slug);
+        print("********************");
+        print(response.data);
+        return ProjecetSlug.fromJson(response.data);
 
     } catch(e) {  
     print(" =================================================== Error \n $e");
