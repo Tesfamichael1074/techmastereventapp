@@ -8,6 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:techmasterevent/provider/projectProvider.dart';
 import 'package:techmasterevent/reusable/customSizedBox.dart';
 import 'package:techmasterevent/screens/allProjects.dart';
+import 'package:techmasterevent/screens/projectSlug.dart';
 import 'package:techmasterevent/services/projectsService.dart';
 
 class ProjectsList extends StatefulWidget {
@@ -40,7 +41,8 @@ class _ProjectsListState extends State<ProjectsList> {
                   return child;
                 },
                 child: ListView.builder(
-                  scrollDirection: widget.height == 45.0.h ? Axis.horizontal : Axis.vertical,
+                  scrollDirection:
+                      widget.height == 45.0.h ? Axis.horizontal : Axis.vertical,
                   itemCount:
                       Provider.of<ProjectProvider>(context).projects.length,
                   itemBuilder: (ctx, index) {
@@ -48,14 +50,22 @@ class _ProjectsListState extends State<ProjectsList> {
                         Provider.of<ProjectProvider>(context).projects[index];
                     return InkWell(
                       onTap: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => AllProjectsPage()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProjectSlugPage(
+                              slug: data.slug,
+                              project: data,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         width: widget.height == 45.0.h ? 50.0.w : 100.0.w,
                         margin: EdgeInsets.symmetric(
-                            vertical: widget.height == 45.0.h ? 5.0.h : 1.0.h , 
-                            horizontal: widget.height == 45.0.h ? 10 : 5.0.w,
-                            ),
+                          vertical: widget.height == 45.0.h ? 5.0.h : 1.0.h,
+                          horizontal: widget.height == 45.0.h ? 10 : 5.0.w,
+                        ),
                         child: Stack(
                           children: [
                             Card(
@@ -68,7 +78,9 @@ class _ProjectsListState extends State<ProjectsList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: widget.height == 45.0.h ? 50.0.w : 100.0.w,
+                                      width: widget.height == 45.0.h
+                                          ? 50.0.w
+                                          : 100.0.w,
                                       height: 20.0.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
@@ -77,26 +89,31 @@ class _ProjectsListState extends State<ProjectsList> {
                                         ),
                                       ),
                                       child: CachedNetworkImage(
-                                        imageUrl:
-                                           data.imagepath != null ? "https://" +  data.imagepath : "https://via.placeholder.com/600/24f355",
-                                        imageBuilder: (context, imageProvider) => Container(
+                                        imageUrl: data.imagepath != null
+                                            ? "https://" + data.imagepath
+                                            : "https://via.placeholder.com/600/24f355",
+                                        imageBuilder:
+                                            (context, imageProvider) =>
+                                                Container(
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(10),
-                                          topLeft: Radius.circular(10),
-                                        ),
+                                              topRight: Radius.circular(10),
+                                              topLeft: Radius.circular(10),
+                                            ),
                                             image: DecorationImage(
-                                                image: imageProvider,
-                                                fit: BoxFit.cover,
-                                                
-                                                ),
+                                              image: imageProvider,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                         placeholder: (context, url) => Center(
                                           child: CircularProgressIndicator(),
                                         ),
                                         errorWidget: (context, url, error) =>
-                                            Icon(Icons.error, color: Colors.red,),
+                                            Icon(
+                                          Icons.error,
+                                          color: Colors.red,
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -149,32 +166,32 @@ class _ProjectsListState extends State<ProjectsList> {
                                 height: 12.0.w,
                                 width: 12.0.w,
                                 decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        color: Colors.white, width: 3),
-                                    ),
-                                
+                                  color: Colors.amber,
+                                  shape: BoxShape.circle,
+                                  border:
+                                      Border.all(color: Colors.white, width: 3),
+                                ),
                                 child: CachedNetworkImage(
-                                        imageUrl:
-                                            "https://" + data.author.avatar,
-                                        fit: BoxFit.fill,
-                                        imageBuilder: (context, imageProvider) => Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                image: imageProvider,
-                                                fit: BoxFit.cover,
-                                                
-                                                ),
-                                          ),
-                                        ),
-                                        placeholder: (context, url) => Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.account_circle, color: Colors.white,),
+                                  imageUrl: "https://" + data.author.avatar,
+                                  fit: BoxFit.fill,
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover,
                                       ),
+                                    ),
+                                  ),
+                                  placeholder: (context, url) => Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  errorWidget: (context, url, error) => Icon(
+                                    Icons.account_circle,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             )
                           ],

@@ -11,32 +11,32 @@ class LoggingInterceptor extends Interceptor {
     return super.onRequest(options);
   }
 
-  @override
-  Future onResponse(Response response) {
+  // @override
+  // Future onResponse(Response response) {
 
-    print("<---------------------------  Response ----------------------------------------");
-    print("Response Code: ${response.statusCode} \n  Request Path: ${response.request.path}");
+  //   print("<---------------------------  Response ----------------------------------------");
+  //   print("Response Code: ${response.statusCode} \n  Request Path: ${response.request.path}");
 
-    String responseAsString = response.data.toString();
+  //   String responseAsString = response.data.toString();
 
-    if (responseAsString.length > _maxCharactersPerLine) {
-      int iterations =
-          (responseAsString.length / _maxCharactersPerLine).floor();
-      for (int i = 0; i <= iterations; i++) {
-        int endingIndex = i * _maxCharactersPerLine + _maxCharactersPerLine;
-        if (endingIndex > responseAsString.length) {
-          endingIndex = responseAsString.length;
-        }
-        print(
-            responseAsString.substring(i * _maxCharactersPerLine, endingIndex));
-      }
-    } else {
-      print(response.data);
-    }
-    print("<--------------------------- END HTTP ----------------------------------------");
+  //   if (responseAsString.length > _maxCharactersPerLine) {
+  //     int iterations =
+  //         (responseAsString.length / _maxCharactersPerLine).floor();
+  //     for (int i = 0; i <= iterations; i++) {
+  //       int endingIndex = i * _maxCharactersPerLine + _maxCharactersPerLine;
+  //       if (endingIndex > responseAsString.length) {
+  //         endingIndex = responseAsString.length;
+  //       }
+  //       print(
+  //           responseAsString.substring(i * _maxCharactersPerLine, endingIndex));
+  //     }
+  //   } else {
+  //     print(response.data);
+  //   }
+  //   print("<--------------------------- END HTTP ----------------------------------------");
 
-    return super.onResponse(response);
-  }
+  //   return super.onResponse(response);
+  // }
 
   @override
   Future onError(DioError err) {

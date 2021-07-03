@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:techmasterevent/model/projectsModel.dart';
 import 'package:techmasterevent/provider/projectProvider.dart';
 
 class ProjectSlugPage extends StatefulWidget {
 
   final String slug;
+  final Projects project;
 
-  ProjectSlugPage({this.slug});
+  ProjectSlugPage({this.slug, this.project});
 
   @override
   _ProjectSlugPageState createState() => _ProjectSlugPageState();
@@ -20,8 +22,8 @@ class _ProjectSlugPageState extends State<ProjectSlugPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: null,
+    return Scaffold(
+       appBar: AppBar(),
     );
   }
 }

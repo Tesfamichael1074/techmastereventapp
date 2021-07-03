@@ -32,7 +32,7 @@ class ProjectsService {
         Response response = await dio.dio.get("/projects/slug/" + slug);
         print("********************");
         print(response.data);
-        return ProjecetSlug.fromJson(response.data);
+        return ProjecetSlug.fromJson(json.decode(response.data));
 
     } catch(e) {  
     print(" =================================================== Error \n $e");

@@ -18,7 +18,6 @@ class ProjecetSlug {
         description = json["description"],
         shortDescription = json["shortDescription"],
         score = double.parse(json["score"].toString()),
-        imagepath = ((json["multimedia"] as List).where((element) => element["type"] == "img") as Map)["urls"][2] ?? "",
         author = AuthorModel.fromJson(json["author"] ?? {}),
         slug = json["slug"];
 }
