@@ -35,9 +35,7 @@ class _ProjectSlugPageState extends State<ProjectSlugPage> {
         create: (context) => ProjectProvider(),
         builder: (ctx, snapshot) {
           // return  html(Provider.of<ProjectProvider>(context).projectSlug);
-          return Provider.of<ProjectProvider>(context).projectSlug == null ?
-          Center(child: CircularProgressIndicator(),)
-          : Container(
+          return Container(
             height: 100.0.h,
             child: Container(
               width: 100.0.w,
@@ -58,32 +56,83 @@ class _ProjectSlugPageState extends State<ProjectSlugPage> {
                       actions: [],
                       stretch: true,
                       expandedHeight: 30.0.h,
-                      flexibleSpace: CachedNetworkImage(
-                          imageUrl: widget.project.imagepath != null
-                              ? "https://" + widget.project.imagepath
-                              : "https://via.placeholder.com/600/24f355",
-                          imageBuilder: (ctx, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
+                      backgroundColor: Colors.transparent,
+                      flexibleSpace: Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 8.5.w),
+                            child: CachedNetworkImage(
+                                imageUrl: widget.project.imagepath != null
+                                    ? "https://" + widget.project.imagepath
+                                    : "https://via.placeholder.com/600/24f355",
+                                imageBuilder: (ctx, imageProvider) => Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) => Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                ),
                               ),
-                            ),
                           ),
-                          placeholder: (context, url) => Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          errorWidget: (context, url, error) => Icon(
-                            Icons.error,
-                            color: Colors.red,
-                          ),
-                        ),
+
+                        Positioned(
+                              top: 30.0.h - 17.0.w,
+                              right: 4.0.w,
+                              child: Hero(
+                                tag: widget.project.author.avatar,
+                                child: Container(
+                                  height: 17.0.w,
+                                  width: 17.0.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    shape: BoxShape.circle,
+                                    border:
+                                        Border.all(color: Colors.white, width: 3),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: "https://" + widget.project.author.avatar,
+                                    fit: BoxFit.fill,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    errorWidget: (context, url, error) => Icon(
+                                      Icons.account_circle,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+
+
+                        ],
+                      ),
                     ),
-                    SliverList(
+                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext ctx, int index) {
-                          return Html(
-                                data: Provider.of<ProjectProvider>(context).projectSlug.description,
+                          return  Provider.of<ProjectProvider>(context).projectSlug == null ?
+                                  Center(child: CircularProgressIndicator(),)
+                                  : Html(
+                                data:  Provider.of<ProjectProvider>(context).projectSlug.description,
                               );
                         },
                         childCount: 1,

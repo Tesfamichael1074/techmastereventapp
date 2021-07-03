@@ -162,34 +162,37 @@ class _ProjectsListState extends State<ProjectsList> {
                             Positioned(
                               top: 20.0.h - 5.0.w,
                               right: 4.0.w,
-                              child: Container(
-                                height: 12.0.w,
-                                width: 12.0.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  shape: BoxShape.circle,
-                                  border:
-                                      Border.all(color: Colors.white, width: 3),
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: "https://" + data.author.avatar,
-                                  fit: BoxFit.fill,
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        image: imageProvider,
-                                        fit: BoxFit.cover,
+                              child: Hero(
+                                tag: data.author.avatar,
+                                child: Container(
+                                  height: 12.0.w,
+                                  width: 12.0.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    shape: BoxShape.circle,
+                                    border:
+                                        Border.all(color: Colors.white, width: 3),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: "https://" + data.author.avatar,
+                                    fit: BoxFit.fill,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                  errorWidget: (context, url, error) => Icon(
-                                    Icons.account_circle,
-                                    color: Colors.white,
+                                    placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    errorWidget: (context, url, error) => Icon(
+                                      Icons.account_circle,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
