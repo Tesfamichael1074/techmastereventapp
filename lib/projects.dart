@@ -61,7 +61,7 @@ class _ProjectsListState extends State<ProjectsList> {
                         );
                       },
                       child: Container(
-                        width: widget.height == 40.0.h ? widget.height : 100.0.w,
+                        width: widget.height == 40.0.h ? 60.0.w : 100.0.w,
                         margin: EdgeInsets.symmetric(
                           vertical: widget.height == 40.0.h ? 5.0.h : 1.0.h,
                           horizontal: widget.height == 40.0.h ? 10 : 5.0.w,
@@ -81,7 +81,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                       width: widget.height == 40.0.h
                                           ? widget.height
                                           : 100.0.w,
-                                      height: 20.0.h,
+                                      height: 18.0.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(10),
@@ -160,7 +160,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                   ],
                                 )),
                             Positioned(
-                              top: 20.0.h - 5.0.w,
+                              top: 18.0.h - 5.0.w,
                               right: 4.0.w,
                               child: Hero(
                                 tag: data.author.avatar,

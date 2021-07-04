@@ -11,7 +11,7 @@ class HomepageHeader extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      height: 60.0.h,
+                      height: 58.0.h,
                       width: 75.0.w,
                       decoration: BoxDecoration(
                           color: Color(0xFFFAD4B2),
