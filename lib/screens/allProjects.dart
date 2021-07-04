@@ -74,167 +74,177 @@ class AllProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 2.0.h),
+      margin: EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 1.0.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Stack(
-        children: [
+      child: Card(
+        shape: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        elevation: 8,
+        child: Stack(
+          children: [
 
-          CachedNetworkImage(
-                  imageUrl: project.imagepath != null
-                      ? "https://" + project.imagepath
-                      : "https://via.placeholder.com/600/24f355",
-                  imageBuilder:
-                      (context, imageProvider) =>
-                          Container(
-                            height: 25.0.h,
-                            width: 100.0.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
+            CachedNetworkImage(
+                    imageUrl: project.imagepath != null
+                        ? "https://" + project.imagepath
+                        : "https://via.placeholder.com/600/24f355",
+                    imageBuilder:
+                        (context, imageProvider) =>
+                            Container(
+                              height: 25.0.h,
+                              width: 100.0.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        Icon(
+                      Icons.error,
+                      color: Colors.red,
+                    ),
                   ),
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) =>
-                      Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
-                ),
 
 
-          Container(
-            height: 25.0.h,
-            width: 100.0.w,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.black.withOpacity(.4)),
-            child: null,
-          ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              height: 17.0.h,
-              width: 90.0.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Colors.black],
-                  )),
-              child: Container(),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              height: 12.0.h,
+            Container(
+              height: 25.0.h,
               width: 100.0.w,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  20.w,
-                  CachedNetworkImage(
-                      imageUrl: project.author.avatar != null
-                          ? "https://" + project.author.avatar
-                          : "https://via.placeholder.com/600/24f355",
-                      imageBuilder:
-                          (context, imageProvider) =>
-                              Container(
-                                height: 12.0.w,
-                                width: 12.0.w,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: imageProvider,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                      placeholder: (context, url) => Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          Icon(
-                        Icons.account_circle,
-                        color: Colors.amber,
-                      ),
-                    ),
-
-
-                  Container(
-
-                  ),
-                  10.w,
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 48.0.w,
-                        child: Text(
-                          project.name ?? "",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.quicksand(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 12.0.sp
-                          ),
-                        ),
-                      ),
-
-                      Container(
-                        width: 50.0.w,
-                        child: Text(
-                          "By: " + project.author.nickname ?? "Unkown",
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.quicksand(
-                            color: Colors.white,
-                            fontSize: 8.0.sp,
-                            
-                          ),
-                        ),
-                      ),
-                      
-                    ],
-                  ),
-
-                  Container(
-                            width: 11.0.w,
-                            child: Row(
-                              children: [
-                                5.w,
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 12.0.sp,
-                                ),
-                                1.w,
-                                Text(
-                                  project.score.toString() ?? "0",
-                                  style: TextStyle(fontSize: 9.0.sp, color: Colors.white),
-                                ),
-                                Spacer(),
-                              ],
-                            ),
-                          ),
-
-                ],
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black.withOpacity(.4)),
+              child: null,
+            ),
+            
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: 17.0.h,
+                width: 88.0.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Colors.transparent, Colors.black],
+                    )),
+                child: Container(),
               ),
             ),
-          ),
-        ],
+
+
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: 12.0.h,
+                width: 100.0.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    20.w,
+                    CachedNetworkImage(
+                        imageUrl: project.author.avatar != null
+                            ? "https://" + project.author.avatar
+                            : "https://via.placeholder.com/600/24f355",
+                        imageBuilder:
+                            (context, imageProvider) =>
+                                Container(
+                                  height: 10.0.w,
+                                  width: 10.0.w,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                        placeholder: (context, url) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            Icon(
+                          Icons.account_circle,
+                          color: Colors.amber,
+                        ),
+                      ),
+
+
+                    Container(
+
+                    ),
+                    10.w,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 48.0.w,
+                          child: Text(
+                            project.name ?? "",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.quicksand(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 12.0.sp
+                            ),
+                          ),
+                        ),
+
+                        Container(
+                          width: 50.0.w,
+                          child: Text(
+                            "By: " + project.author.nickname ?? "Unkown",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.quicksand(
+                              color: Colors.white,
+                              fontSize: 8.0.sp,
+                              
+                            ),
+                          ),
+                        ),
+                        
+                      ],
+                    ),
+
+                    Container(
+                              width: 11.0.w,
+                              child: Row(
+                                children: [
+                                  5.w,
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 12.0.sp,
+                                  ),
+                                  1.w,
+                                  Text(
+                                    project.score.toString() ?? "0",
+                                    style: TextStyle(fontSize: 9.0.sp, color: Colors.white),
+                                  ),
+                                  Spacer(),
+                                ],
+                              ),
+                            ),
+
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

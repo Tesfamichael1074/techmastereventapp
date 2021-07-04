@@ -25,11 +25,8 @@ class ProjectProvider extends ChangeNotifier {
 
   Future<void> fetchProjectSlug(String slug) async {
       await pg.getProjectSlug(slug).then((value) {
-        print("******************************");
-        print(value.shortDescription);
         projectSlug = value;
         notifyListeners();
-
       });
   }
 

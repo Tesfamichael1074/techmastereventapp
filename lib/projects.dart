@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:techmasterevent/model/projectsModel.dart';
-import 'package:techmasterevent/projectCard.dart';
 import 'package:sizer/sizer.dart';
 import 'package:techmasterevent/provider/projectProvider.dart';
 import 'package:techmasterevent/reusable/customSizedBox.dart';
@@ -12,8 +11,6 @@ import 'package:techmasterevent/screens/projectSlug.dart';
 import 'package:techmasterevent/services/projectsService.dart';
 
 class ProjectsList extends StatefulWidget {
-  final double height;
-  ProjectsList({this.height});
   @override
   _ProjectsListState createState() => _ProjectsListState();
 }
@@ -28,21 +25,20 @@ class _ProjectsListState extends State<ProjectsList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height,
+      height: 40.0.h,
       child: CustomScrollView(
         primary: false,
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: Container(
-              height: widget.height,
+              height: 40.0.h,
               child: ChangeNotifierProvider<ProjectProvider>(
                 create: (context) => ProjectProvider(),
                 builder: (context, child) {
                   return child;
                 },
                 child: ListView.builder(
-                  scrollDirection:
-                      widget.height == 40.0.h ? Axis.horizontal : Axis.vertical,
+                  scrollDirection: Axis.horizontal,
                   itemCount:
                       Provider.of<ProjectProvider>(context).projects.length,
                   itemBuilder: (ctx, index) {
@@ -61,15 +57,15 @@ class _ProjectsListState extends State<ProjectsList> {
                         );
                       },
                       child: Container(
-                        width: widget.height == 40.0.h ? 60.0.w : 100.0.w,
+                        width: 60.0.w,
                         margin: EdgeInsets.symmetric(
-                          vertical: widget.height == 40.0.h ? 5.0.h : 1.0.h,
-                          horizontal: widget.height == 40.0.h ? 10 : 5.0.w,
+                          vertical: 5.0.h,
+                          horizontal: 10,
                         ),
                         child: Stack(
                           children: [
                             Card(
-                                elevation: 5,
+                                elevation: 0,
                                 shape: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(10)),
@@ -78,9 +74,7 @@ class _ProjectsListState extends State<ProjectsList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: widget.height == 40.0.h
-                                          ? widget.height
-                                          : 100.0.w,
+                                      width: 40.0.h,
                                       height: 18.0.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(
