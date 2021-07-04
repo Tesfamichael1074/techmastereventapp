@@ -24,9 +24,9 @@ class _HomepageHeaderState extends State<HomepageHeader>
     _animation = new CurveTween(curve: Curves.ease).animate(_controller);
     _controller.forward();
     _controller.addListener(() {
-        setState(() {
-                  print(_animation.value);
-                });
+      setState(() {
+        print(_animation.value);
+      });
     });
   }
 
@@ -36,7 +36,7 @@ class _HomepageHeaderState extends State<HomepageHeader>
       child: Row(
         children: [
           Transform.translate(
-                  offset: Offset(0, -20 + _animation.value * 20),
+            offset: Offset(0, -20 + _animation.value * 20),
             child: Container(
               height: 57.0.h,
               width: 75.0.w,
@@ -47,7 +47,7 @@ class _HomepageHeaderState extends State<HomepageHeader>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 Transform.translate(
+                  Transform.translate(
                     offset: Offset(0, -20 + _animation.value * 20),
                     child: Container(
                         width: 6.0.w,
@@ -87,29 +87,40 @@ class _HomepageHeaderState extends State<HomepageHeader>
             height: 50.0.h,
             padding: EdgeInsets.only(top: 3.0.h),
             child: Stack(
-              
               children: [
-
                 Transform.translate(
                   offset: Offset(0, -20 + _animation.value * 20),
-                  child: SideButton(imagepath: "assets/bulb.png",),
+                  child: SideButton(
+                    imagepath: "assets/bulb.png",
+                    onpressed: () {},
+                  ),
                 ),
-
                 Transform.translate(
-                  offset: Offset(0, _animation.value * 14.0.h  ),
-                  child: SideButton(imagepath: "assets/geer.png",),
+                  offset: Offset(0, _animation.value * 14.0.h),
+                  child: SideButton(
+                    imagepath: "assets/geer.png",
+                    onpressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AllProjectsPage()));
+                    },
+                  ),
                 ),
-
                 Transform.translate(
                   offset: Offset(0, _animation.value * 27.0.h),
-                  child: SideButton(imagepath: "assets/phone.png",),
+                  child: SideButton(
+                    imagepath: "assets/phone.png",
+                    onpressed: () {},
+                  ),
                 ),
-
                 Transform.translate(
                   offset: Offset(0, _animation.value * 40.0.h),
-                  child: SideButton(imagepath: "assets/signin.png",),
+                  child: SideButton(
+                    imagepath: "assets/signin.png",
+                    onpressed: () {},
+                  ),
                 ),
-    
               ],
             ),
           ),
@@ -119,36 +130,39 @@ class _HomepageHeaderState extends State<HomepageHeader>
   }
 }
 
-
 class SideButton extends StatelessWidget {
   final String imagepath;
-  const SideButton({this.imagepath});
+  final Function onpressed;
+  const SideButton({this.imagepath, this.onpressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-            width: 25.0.w,
+      width: 25.0.w,
+      height: 12.0.w,
+      child: Center(
+        child: InkWell(
+          onTap: onpressed,
+          child: Container(
+            width: 12.0.w,
             height: 12.0.w,
-            child: Center(
-              child: Container(
-                width: 12.0.w,
-                height: 12.0.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(.1),
-                          blurRadius: 5,
-                          spreadRadius: 2,
-                          offset: Offset(0, 4)),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(imagepath),
-                ),
-              ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(.1),
+                      blurRadius: 5,
+                      spreadRadius: 2,
+                      offset: Offset(0, 4)),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(imagepath),
             ),
-          );
+          ),
+        ),
+      ),
+    );
   }
 }
