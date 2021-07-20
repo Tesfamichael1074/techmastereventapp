@@ -50,8 +50,8 @@ class _HomepageHeaderState extends State<HomepageHeader>
                   Transform.translate(
                     offset: Offset(0, -20 + _animation.value * 20),
                     child: Container(
-                        width: 6.0.w,
-                        height: 6.0.w,
+                        width: 8.0.w,
+                        height: 8.0.w,
                         margin: EdgeInsets.only(left: 5.0.w, top: 10.0.w),
                         child: Image.asset("assets/menu.png")),
                   ),
